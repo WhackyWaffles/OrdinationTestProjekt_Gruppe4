@@ -1,5 +1,6 @@
 package ordination;
 
+
 public class DagligFast extends Ordination {
     private Dosis[] doser = new Dosis[4];
 
