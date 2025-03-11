@@ -13,14 +13,11 @@ public class PN extends Ordination {
         this.antalEnheder = antalEnheder;
     }
 
-    /**
-     * <p>Registrerer at der er givet en dosis paa dagen givetDato.
+    /** <p>Registrerer at der er givet en dosis paa dagen givetDato.
      * <p>Returnerer true hvis givetDato er inden for ordinationens gyldighedsperiode og datoen huskes.
      * <p>Returnerer false ellers, og datoen givetDato ignoreres.
-     *
      * @param givetDato
-     * @return {@code boolean}
-     */
+     * @return {@code boolean} */
     public boolean givDosis(LocalDate givetDato) {
         // Tjekker, om givetDato er inden for ordinationens gyldighedsperiode.
         if (givetDato.isAfter(super.getStartDato()) && givetDato.isBefore(super.getSlutDato())) {
@@ -48,16 +45,12 @@ public class PN extends Ordination {
         return (double) (((double) dosisdatoer.size()) * antalEnheder) / ((double) (dosisdatoer.getFirst().compareTo(dosisdatoer.getLast())));
     }
 
-
     public double samletDosis() {
         return (double) ((double) dosisdatoer.size()) * antalEnheder;
     }
 
-    /**
-     * <p>Returnerer antal gange ordinationen er anvendt
-     *
-     * @return {@code int}
-     */
+    /** <p>Returnerer antal gange ordinationen er anvendt
+     *  @return {@code int} */
     public int getAntalGangeGivet() {
         return dosisdatoer.size();
     }
