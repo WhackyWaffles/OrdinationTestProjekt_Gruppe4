@@ -1,8 +1,14 @@
 package ordination;
 
 
+import java.time.LocalDate;
+
 public class DagligFast extends Ordination {
     private Dosis[] doser = new Dosis[4];
+
+    public DagligFast(LocalDate startDato, LocalDate slutDato) {
+        super(startDato, slutDato);
+    }
 
     public Dosis[] getDoser() {
         return doser;
