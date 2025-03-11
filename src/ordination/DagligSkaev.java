@@ -1,5 +1,7 @@
 package ordination;
 
+// Mojn, sku' ås' vær' fær' - Henrik
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
