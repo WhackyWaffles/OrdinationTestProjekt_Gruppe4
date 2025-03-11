@@ -1,5 +1,5 @@
 package ordination;
-
+// FÆRDIG ARBEJD
 public class Laegemiddel {
     private String navn;
     private double enhedPrKgPrDoegnLet;   // faktor der anvendes hvis patient vejer < 25 kg
@@ -25,8 +25,15 @@ public class Laegemiddel {
     }
 
     public double anbefaletDosisPrDoegn(int vaegt) {
-        //TODO
-        return 0;
+        if (vaegt <= 0) {
+            return 0.0;
+        } else if (vaegt < 25) {
+            return vaegt * enhedPrKgPrDoegnLet;
+        } else if (vaegt <= 120) {
+            return vaegt * enhedPrKgPrDoegnNormal;
+        } else { // if (vaegt > 120)
+            return vaegt * enhedPrKgPrDoegnTung;
+        }
     }
 
     @Override
