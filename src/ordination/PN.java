@@ -2,7 +2,7 @@ package ordination;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+// FÆRDIG ARBEJD
 public class PN extends Ordination {
 
     private double antalEnheder;
