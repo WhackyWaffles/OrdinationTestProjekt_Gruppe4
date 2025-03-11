@@ -112,9 +112,9 @@ public class OrdinationDetailsPane extends GridPane {
         txtDosis.setText(pn.getAntalEnheder() + "");
 
         txtDoegndosis.setText(pn.doegnDosis() + " "
-                + pn.getLaegemiddel().getEnhed());
+                + pn.getLaegemiddel().getEnhed()); // TODO
         txtTotalDosis.setText(pn.samletDosis() + " "
-                + pn.getLaegemiddel().getEnhed());
+                + pn.getLaegemiddel().getEnhed()); // TODO
     }
 
     public void clear() {
