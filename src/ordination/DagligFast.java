@@ -1,8 +1,7 @@
 package ordination;
 
-
 import java.time.LocalDate;
-
+ // FÆRDIG ARBEJD
 public class DagligFast extends Ordination {
     private Dosis[] doser = new Dosis[4];
 
@@ -34,6 +33,6 @@ public class DagligFast extends Ordination {
 
     @Override
     public String getType() {
-        return "";
+        return "DagligFast";
     }
 }
