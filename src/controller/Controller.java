@@ -50,10 +50,10 @@ public class Controller {
 
 		// Opret doser og tilknyt dem til ordination
 		Dosis[] doser = new Dosis[] {
-				new Dosis(LocalTime.of(6,00), morgenAntal),
+				new Dosis(LocalTime.of(7,00), morgenAntal),
 				new Dosis(LocalTime.of(12,00), middagAntal),
 				new Dosis(LocalTime.of(18,00), aftenAntal),
-				new Dosis(LocalTime.of(24,00), natAntal)
+				new Dosis(LocalTime.of(23,00), natAntal)
 		};
 
 		// Tilføj doser til ordination
@@ -108,7 +108,7 @@ public class Controller {
 	 * anvendes, og den er afhængig af patientens vægt.
 	 */
 	public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
-		//TODO
+ 		//TODO
 		return laegemiddel.anbefaletDosisPrDoegn((int) patient.getVaegt()); // kaster en int, fordi laegemiddel.anbefaletDosiPrDoegn(int vaegt) forventer heltal
 	}
 
