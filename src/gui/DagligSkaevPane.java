@@ -63,9 +63,7 @@ public class DagligSkaevPane extends GridPane {
 		} catch (DateTimeException e) {
 			txtTimeMinut.clear();
 			lblError.setText("Klokkeslet er ikke korrekt format");
-
 		}
-
     }
 
     public String[] getDosisArray() {

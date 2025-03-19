@@ -33,6 +33,7 @@ public class Controller {
 			Patient patient, Laegemiddel laegemiddel, double antal) {
 		// TODO
 		PN pnOrdination = new PN(startDato, slutDato, antal);
+		pnOrdination.setLaegemiddel(laegemiddel);
 		patient.addOrdination(pnOrdination); // Tilknytter ordination til patient
 		return pnOrdination;
 	}
@@ -83,6 +84,8 @@ public class Controller {
 		for (int index = 0; index < klokkeSlet.length; index++) {
 			ordination.opretDosis(klokkeSlet[index], antalEnheder[index]);
 		}
+		// Tilføj lægemiddel til ordination
+		ordination.setLaegemiddel(laegemiddel);
 		// Tilføj ordination til patient
 		patient.addOrdination(ordination);
 		// Returner den færdige ordination
