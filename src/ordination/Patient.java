@@ -6,9 +6,8 @@ public class Patient {
     private String cprnr;
     private String navn;
     private double vaegt;
-    private ArrayList<Ordination> ordinationer = new ArrayList<>();
-
     // TODO: Link til Ordination
+    private ArrayList<Ordination> ordinationer = new ArrayList<>();
 
     public Patient(String cprnr, String navn, double vaegt) {
         this.cprnr = cprnr;

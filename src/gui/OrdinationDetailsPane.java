@@ -10,10 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import ordination.DagligSkaev;
-import ordination.Dosis;
-import ordination.Ordination;
-import ordination.PN;
+import ordination.*;
 
 public class OrdinationDetailsPane extends GridPane {
     private TextField txtStarttid;
@@ -130,12 +127,29 @@ public class OrdinationDetailsPane extends GridPane {
     }
 
     public void setOrdination(Ordination ordination) {
-        txtType.setText(ordination.getType());
-        txtStarttid.setText(ordination.getStartDato().toString());
-        txtSluttid.setText(ordination.getSlutDato().toString());
-        txtLaegemiddel.setText(ordination.getLaegemiddel().toString());
-        txtDoegndosis.setText(ordination.doegnDosis() + "");
-        txtTotalDosis.setText(ordination.samletDosis() + "");
+        if (ordination != null) {
+            txtType.setText(ordination.getType());
+            txtStarttid.setText(ordination.getStartDato().toString());
+            txtSluttid.setText(ordination.getSlutDato().toString());
+
+            // Tjek om lægemiddel er null, før det sættes
+            if (ordination.getLaegemiddel() != null) {
+                txtLaegemiddel.setText(ordination.getLaegemiddel().toString());
+            } else {
+                txtLaegemiddel.setText("Ingen lægemiddel valgt");
+            } // Nulpointer-exception forhindret, nu vises String istedet for at crashe
+
+            txtDoegndosis.setText(ordination.doegnDosis() + "");
+            txtTotalDosis.setText(ordination.samletDosis() + "");
+        } else {
+            // Hvis ordination er null, skal vi rydde felterne
+            txtType.setText("");
+            txtStarttid.setText("");
+            txtSluttid.setText("");
+            txtLaegemiddel.setText("Ingen ordination valgt");
+            txtDoegndosis.setText("");
+            txtTotalDosis.setText("");
+        }
     }
 
     public void setFast(Dosis morgen, Dosis middag, Dosis aften, Dosis nat) {
@@ -168,5 +182,4 @@ public class OrdinationDetailsPane extends GridPane {
         txtDosis.setText(pn.getAntalEnheder() + "");
         txtAnvendt.setText(pn.getAntalGangeGivet() + " antal");
     }
-
 }

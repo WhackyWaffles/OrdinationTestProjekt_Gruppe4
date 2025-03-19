@@ -46,5 +46,4 @@ public class Storage {
 			laegemidler.add(laegemiddel);
 		}
 	}
-
 }

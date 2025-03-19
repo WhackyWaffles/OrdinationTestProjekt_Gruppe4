@@ -124,7 +124,7 @@ public class Controller {
 		for (Patient patient : storage.getAllPatienter()) {
 			if (patient.getVaegt() >= vaegtStart && patient.getVaegt() <= vaegtSlut) {
 				for (Ordination ordination : patient.getOrdinationer()) {
-					if (ordination.getLaegemiddel().equals(laegemiddel)) {
+					if (ordination.getLaegemiddel() != null && ordination.getLaegemiddel().equals(laegemiddel)) { // håndterer NullPointerException
 						antal++;
 					}
 				}

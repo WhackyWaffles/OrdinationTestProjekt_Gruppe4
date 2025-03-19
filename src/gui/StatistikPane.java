@@ -55,6 +55,9 @@ public class StatistikPane extends GridPane {
 		pane1.add(new Label("Lægemiddel: "), 0, 2);
 		pane1.add(lstLaegemidler, 1, 2);
 		this.add(pane1, 0, 1);
+		if (!lstLaegemidler.getItems().isEmpty()) { // håndterer null-værdier
+			lstLaegemidler.getSelectionModel().select(0);
+		}
 
 		pane2.add(new Label("Antal: "), 0, 0);
 		ordinationerPerVaegtPerLaegemiddel.setEditable(false);
@@ -75,6 +78,12 @@ public class StatistikPane extends GridPane {
 			int vTil = Integer.parseInt(txfVaegtTil.getText());
 			Laegemiddel laegemiddel = lstLaegemidler.getSelectionModel()
 					.getSelectedItem();
+
+			if (laegemiddel == null) {
+				ordinationerPerVaegtPerLaegemiddel.setText("Vælg et lægemiddel");
+				return;
+			} // StatistikPane kan ikke håndtere nul-værdier
+
 			int antal = controller.antalOrdinationerPrVaegtPrLaegemiddel(vFra, vTil,
 					laegemiddel);
 			ordinationerPerVaegtPerLaegemiddel.setText(antal + "");
@@ -88,6 +97,5 @@ public class StatistikPane extends GridPane {
 		txfVaegtFra.clear();
 		txfVaegtTil.clear();
 		lstLaegemidler.getSelectionModel().clearSelection();
-		
 	}
 }

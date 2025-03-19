@@ -23,7 +23,6 @@ class DagligFastTest {
                 new Dosis(LocalTime.of(18,00), 1.0),
                 new Dosis(LocalTime.of(23,00),2.0)
         };
-
         ordination.setDoser(forventedeDoser);
 
         //Act
@@ -47,10 +46,17 @@ class DagligFastTest {
                 new Dosis(LocalTime.of(18,00), 2.0),
                 new Dosis(LocalTime.of(23,00), 2.5)
         };
+        Dosis[] nyereDoser = new Dosis[] {
+                new Dosis(LocalTime.of(7,00), 1.5),
+                new Dosis(LocalTime.of(12,00),2.0),
+                new Dosis(LocalTime.of(18,00), 2.5),
+                new Dosis(LocalTime.of(23,00), 3.5)
+        };
         // Act
         ordination.setDoser(nyeDoser);
+        ordination.setDoser(nyereDoser);
         // Assert
-        assertArrayEquals(nyeDoser, ordination.getDoser(), "setDoser() opdaterer ikke doserne korrekt!");
+        assertArrayEquals(nyereDoser, ordination.getDoser(), "setDoser() opdaterer ikke doserne korrekt!");
     } // Vi kan også lave en test, hvor vi kalder setDoser() to gange og sikrer, at den sidste værdi overskriver den første.
 
     @Test
@@ -70,7 +76,7 @@ class DagligFastTest {
         ordination.setDoser(doser);
         // Act
         double faktiskDosis = ordination.samletDosis();
-        double forventetDosis = (1.0 + 1.0 + 1.0 + 1.0) * 7; // Doegnsdosis * antal dage
+        double forventetDosis = (1.0 + 1.0 + 1.0 + 1.0) * 7; // Doegndosis * antal dage
         // Assert
         assertEquals(forventetDosis, faktiskDosis, 0.001, "samletDosis() beregner forkert total dosis!");
     }
@@ -90,7 +96,7 @@ class DagligFastTest {
                 new Dosis(LocalTime.of(23,00), 1.0)
         };
         ordination.setDoser(doser);
-        double forventetDosis = (1.0 + 1.0 + 1.0 + 1.0); // Doegnsdosis for det døgn
+        double forventetDosis = (1.0 + 1.0 + 1.0 + 1.0); // Doegndosis for det døgn
         // Act
         double faktiskDosis = ordination.doegnDosis();
         // Assert
