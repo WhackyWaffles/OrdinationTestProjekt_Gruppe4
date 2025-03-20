@@ -16,6 +16,8 @@ public class Laegemiddel {
         this.enhed = enhed;
     }
 
+    public double getEnhedPrKgPrDoegnLet() { return enhedPrKgPrDoegnLet; }
+
     public String getEnhed() {
         return enhed;
     }

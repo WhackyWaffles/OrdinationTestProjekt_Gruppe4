@@ -57,8 +57,8 @@ class PNTest {
         pn.givDosis(LocalDate.of(2025,3,16));
         pn.givDosis(LocalDate.of(2025,3,17));
         double result = pn.doegnDosis();
-        // Assert (9/4)
-        assertEquals(2.25, result, 0.001, "Døgndosis er ikke korrekt udregnet ud fra antal doser og antal dage!");
+        // Assert (9/5)
+        assertEquals(1.8, result, 0.001, "Døgndosis er ikke korrekt udregnet ud fra antal doser og antal dage!");
     }
 
     @Test

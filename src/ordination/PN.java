@@ -59,10 +59,10 @@ public class PN extends Ordination {
         if (dosisdatoer.isEmpty()) {
             return 0; // Skal kunne håndtere ingen doser givet
         }
-        long antalDage = ChronoUnit.DAYS.between(dosisdatoer.getFirst(), dosisdatoer.getLast());
-        if (antalDage == 0) {
-            antalDage = 1; // Undgå division med 0
-        }
+        long antalDage = ChronoUnit.DAYS.between(dosisdatoer.getFirst(), dosisdatoer.getLast()) + 1;
+//        if (antalDage == 0) {
+//            antalDage = 1; // Unødvendig for at undgå division med 0
+//        }
 //        (antal gange ordinationen er anvendt * antal enheder) / (antal dage mellem første og sidste givning)
         return (double) (dosisdatoer.size() * antalEnheder) / antalDage;
     }
