@@ -92,6 +92,7 @@ public class Controller {
 		return ordination;
 	}
 
+
 	/**
 	 * En dato for hvornår ordinationen anvendes tilføjes ordinationen.
 	 */
