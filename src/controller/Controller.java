@@ -33,12 +33,13 @@ public class Controller {
 	 */
 	public PN opretPNOrdination(LocalDate startDato, LocalDate slutDato,
 								Patient patient, Laegemiddel laegemiddel, double antal) {
-		if (checkStartFoerSlut(startDato,slutDato)) {
+		if (!checkStartFoerSlut(startDato,slutDato)) {
+			throw new IllegalArgumentException("Startdato skal være før Slutdato");
+		}
 			PN pnOrdination = new PN(startDato, slutDato, antal);
 			pnOrdination.setLaegemiddel(laegemiddel);
 			patient.addOrdination(pnOrdination); // Tilknytter ordination til patient
 			return pnOrdination;
-		} else throw new IllegalArgumentException("Startdato skal være før Slutdato");
 	}
 
 	/**
@@ -49,6 +50,8 @@ public class Controller {
 												double morgenAntal, double middagAntal, double aftenAntal,
 												double natAntal) {
 		if (checkStartFoerSlut(startDato,slutDato)) {
+			throw new IllegalArgumentException("Startdato skal være før Slutdato");
+		}
 			// Opret en ny DagligFast-ordination
 			DagligFast ordination = new DagligFast(startDato, slutDato);
 
@@ -68,7 +71,6 @@ public class Controller {
 			patient.addOrdination(ordination);
 			// Returner den færdige ordination
 			return ordination;
-		} else throw new IllegalArgumentException("Startdato skal være før Slutdato");
 	}
 
 	/**
@@ -78,6 +80,8 @@ public class Controller {
 												  LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
 												  LocalTime[] klokkeSlet, double[] antalEnheder) {
 		if (checkStartFoerSlut(startDato,slutDato)) {
+			throw new IllegalArgumentException("Startdato skal være før Slutdato");
+		}
 			// Opret en ny DagligSkaev-ordination
 			DagligSkaev ordination = new DagligSkaev(startDato, slutDato);
 			// Tjek at arrays har samme længder
@@ -94,7 +98,6 @@ public class Controller {
 			patient.addOrdination(ordination);
 			// Returner den færdige ordination
 			return ordination;
-		} else throw new IllegalArgumentException("Startdato skal være før Slutdato");
 	}
 
 
