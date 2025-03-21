@@ -134,18 +134,78 @@ class ControllerTest {
     }
 
     @Test
-    @DisplayName("Test af anbefalet dosis for let patient (< 25 kg)")
-    void anbefaletDosisPrDoegn() {
+    @DisplayName("Test af anbefalet dosis for svævende patient (< 0 kg)")
+    void anbefaletDosisPrDoegnSvævende() {
         // Arrange
         Controller controller = new Controller();
-        Patient patient = new Patient("010101-1234", "Lille Lars", 20); // Let patient
-        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 2.0, 3.0, 4.0, "kg"); // Faktor for let patient: 2.0 mg/kg
+        Patient patient = new Patient("010101-0000", "Flyver Lars", -1); // Svævende patient
+        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 2.0, 3.0, 4.0, "mg"); // Faktor for let patient: 2.0 mg/kg
 
         // Act
         double dosis = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
 
         // Assert
-        assertEquals(40.0, dosis, 0.01, "Forventet dosis: 20 kg * 2.0 mg/kg");
+        assertEquals(00.0, dosis, 0.01, "Forventet dosis: -1 kg * 2.0 mg/kg");
+    }
+
+    @Test
+    @DisplayName("Test af anbefalet dosis for let patient (< 25 kg)")
+    void anbefaletDosisPrDoegnLet() {
+        // Arrange
+        Controller controller = new Controller();
+        Patient patient = new Patient("010101-1234", "Lille Lars", 24); // Let patient
+        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 2.0, 3.0, 4.0, "mg"); // Faktor for let patient: 2.0 mg/kg
+
+        // Act
+        double dosis = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+
+        // Assert
+        assertEquals(48.0, dosis, 0.01, "Forventet dosis: 20 kg * 2.0 mg/kg");
+    }
+
+    @Test
+    @DisplayName("Test af anbefalet dosis for normal patient (= 25 kg)")
+    void anbefaletDosisPrDoegnBette() {
+        // Arrange
+        Controller controller = new Controller();
+        Patient patient = new Patient("010101-1233", "Bette Lars", 25); // Normal patient
+        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 2.0, 3.0, 4.0, "mg"); // Faktor for let patient: 2.0 mg/kg
+
+        // Act
+        double dosis = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+
+        // Assert
+        assertEquals(75.0, dosis, 0.01, "Forventet dosis: 25 kg * 3.0 mg/kg");
+    }
+
+    @Test
+    @DisplayName("Test af anbefalet dosis for normal patient (> 25kg & =< 120 kg)")
+    void anbefaletDosisPrDoegnNormal() {
+        // Arrange
+        Controller controller = new Controller();
+        Patient patient = new Patient("010101-1235", "Mellem Lars", 120); // Middel patient
+        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 2.0, 3.0, 4.0, "mg"); // Faktor for normal patient: 3.0 mg/kg
+
+        // Act
+        double dosis = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+
+        // Assert
+        assertEquals(360.0, dosis, 0.01, "Forventet dosis: 120 kg * 3.0 mg/kg");
+    }
+
+    @Test
+    @DisplayName("Test af anbefalet dosis for tung patient (> 120 kg)")
+    void anbefaletDosisPrDoegnTung() {
+        // Arrange
+        Controller controller = new Controller();
+        Patient patient = new Patient("010101-1236", "Store Lars", 121); // Middel patient
+        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 2.0, 3.0, 4.0, "mg"); // Faktor for normal patient: 3.0 mg/kg
+
+        // Act
+        double dosis = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+
+        // Assert
+        assertEquals(484.0, dosis, 0.01, "Forventet dosis: 121 kg * 4.0 mg/kg");
     }
 
     @Test
