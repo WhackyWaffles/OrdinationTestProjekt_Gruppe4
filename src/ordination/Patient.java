@@ -6,9 +6,14 @@ public class Patient {
     private String cprnr;
     private String navn;
     private double vaegt;
-    // TODO: Link til Ordination
     private ArrayList<Ordination> ordinationer = new ArrayList<>();
 
+    /**
+     * Basic Constructor
+     * @param cprnr
+     * @param navn
+     * @param vaegt
+     */
     public Patient(String cprnr, String navn, double vaegt) {
         this.cprnr = cprnr;
         this.navn = navn;
@@ -35,7 +40,6 @@ public class Patient {
         this.vaegt = vaegt;
     }
 
-    //TODO: Metoder til at vedligeholde link til Ordination
     public ArrayList<Ordination> getOrdinationer() {
         return ordinationer;
     }

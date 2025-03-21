@@ -3,7 +3,7 @@ package ordination;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-// FÆRDIG ARBEJD
+// JOBS DONE + TEST COVERAGE GOOD --- Tobias 21-02-2025
 public class PN extends Ordination {
 
     private double antalEnheder;
@@ -14,9 +14,9 @@ public class PN extends Ordination {
         this.antalEnheder = antalEnheder;
     }
 
-    /** <p>Registrerer at der er givet en dosis paa dagen givetDato.
-     * <p>Returnerer true hvis givetDato er inden for ordinationens gyldighedsperiode og datoen huskes.
-     * <p>Returnerer false ellers, og datoen givetDato ignoreres.
+    /** Registrerer at der er givet en dosis paa dagen givetDato.
+     * Returnerer true hvis givetDato er inden for ordinationens gyldighedsperiode og datoen huskes.
+     * Returnerer false ellers, og datoen givetDato ignoreres.
      * @param givetDato
      * @return {@code boolean} */
     public boolean givDosis(LocalDate givetDato) {
@@ -41,28 +41,12 @@ public class PN extends Ordination {
         }
         return false;
         }
-//                // Tjekker dato for, om den er i midten af datolisten.
-//                } else if (givetDato.isAfter(dosisdatoer.get(i)) && givetDato.isBefore(dosisdatoer.get(i + 1))) {
-//                    dosisdatoer.add(i + 1, givetDato);
-//                // Tjekker dato for, om den er til sidst i datolisten.
-//                } else if (givetDato.isAfter(dosisdatoer.get(i + 1))) {
-//                    dosisdatoer.add(givetDato);
-//                }
-//            }
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
 
     public double doegnDosis() {
         if (dosisdatoer.isEmpty()) {
             return 0; // Skal kunne håndtere ingen doser givet
         }
         long antalDage = ChronoUnit.DAYS.between(dosisdatoer.getFirst(), dosisdatoer.getLast()) + 1;
-//        if (antalDage == 0) {
-//            antalDage = 1; // Unødvendig for at undgå division med 0
-//        }
 //        (antal gange ordinationen er anvendt * antal enheder) / (antal dage mellem første og sidste givning)
         return (double) (dosisdatoer.size() * antalEnheder) / antalDage;
     }
@@ -71,12 +55,15 @@ public class PN extends Ordination {
         return (double) ((double) dosisdatoer.size()) * antalEnheder;
     }
 
-    /** <p>Returnerer antal gange ordinationen er anvendt
-     *  @return {@code int} */
+    /**
+     *  @return {@code int} antal gange ordinationen er anvendt*/
     public int getAntalGangeGivet() {
         return dosisdatoer.size();
     }
 
+    /**
+     * @return {@code double} enheder per dosis
+     */
     public double getAntalEnheder() {
         return antalEnheder;
     }
