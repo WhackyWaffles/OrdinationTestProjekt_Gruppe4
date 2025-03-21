@@ -1,7 +1,7 @@
 package ordination;
 
 import java.time.LocalTime;
-
+// JOBS DONE + TEST COVERAGE GOOD --- Tobias 21-02-2025
 public class Dosis {
     private LocalTime tid;
     private double antal;

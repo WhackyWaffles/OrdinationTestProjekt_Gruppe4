@@ -1,7 +1,7 @@
 package ordination;
 
 import java.time.LocalDate;
- // FÆRDIG ARBEJD
+// JOBS DONE + TEST COVERAGE GOOD --- Tobias 21-02-2025
 public class DagligFast extends Ordination {
     private Dosis[] doser = new Dosis[4];
 

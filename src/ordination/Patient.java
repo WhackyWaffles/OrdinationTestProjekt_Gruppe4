@@ -1,7 +1,7 @@
 package ordination;
 
 import java.util.ArrayList;
-
+// JOBS DONE + TEST COVERAGE GOOD --- Tobias 21-02-2025
 public class Patient {
     private String cprnr;
     private String navn;
@@ -50,11 +50,12 @@ public class Patient {
         }
     }
 
-    public void removeOrdination(Ordination ordination) {
-        if (ordination != null && ordinationer.contains(ordination)) {
-            ordinationer.remove(ordination);
-        }
-    }
+    // Så vidt vi ved, en unødvendig metode.
+//    public void removeOrdination(Ordination ordination) {
+//        if (ordination != null && ordinationer.contains(ordination)) {
+//            ordinationer.remove(ordination);
+//        }
+//    }
 
     @Override
     public String toString(){

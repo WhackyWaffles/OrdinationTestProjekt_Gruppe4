@@ -1,5 +1,5 @@
 package ordination;
-// FÆRDIG ARBEJD
+// JOBS DONE + TEST COVERAGE GOOD --- Tobias 21-02-2025
 public class Laegemiddel {
     private String navn;
     private double enhedPrKgPrDoegnLet;   // faktor der anvendes hvis patient vejer < 25 kg
